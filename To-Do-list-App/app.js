@@ -5,14 +5,27 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
+let items = ["Buy Food", "Cook Food", "Eat Food"];
+
+app.use('view engine', 'ejs');
+
+app.use(bodyParser.urlencoded ({extended: true}));
+app.use(express.static("src"))
+
 app.get("/", function(req, res){
+
     let today = new Date();
 
-    if (today.getDay() === 6 || today.getDay() === 0) {
-        res.send("Yes! it's Now the Weekend");
-    }  else{
-        res.send("Noo! l have to work");
-    }
+    let options = {
+        weekday: "long",
+        day: "numeric",
+        month: "long"
+    };
+
+   let day = today.toLocaleDateString("en-us", options);
+   
+   res.render("list",{kindofDay: day, newListItems: items});
+  
 });
 
 

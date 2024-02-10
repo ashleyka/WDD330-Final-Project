@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"  dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/css/styles.css">
+    <title>To Do list</title>
+</head>
+<body>
+
+    <h1><%= kindOfDay %> </h1>
+
+    <ul>
+        <% for (let i=0; i<newListItems.length; i++) { %>
+
+            <li><%= newListItems[i] %></li>
+        
+       <% } %>
+    </ul>
+    
+    <form class="" action="/" method="post">
+
+        <input type="text" name="newItem"
+
+        <button type="submit" name="button">Add</button>
+        
+    </form>
+</body>
+</html>
