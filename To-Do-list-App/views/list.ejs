@@ -27,7 +27,45 @@
 
   </div>
 
+
+<script>
+
+  document.addEventListener("DOMContentLoaded", function() {
+    let storedItems = localStorage.getItem("items");
+    if (storedItems) {
+      items = JSON.parse(storedItems);
+    }
+    // Display the items
+    displayItems();
+  });
+
   
+  function saveItems() {
+    localStorage.setItem("items", JSON.stringify(items));
+  }
+
+  // Function to display items
+  function displayItems() {
+    
+    document.getElementById("itemList").innerHTML = "";
+  
+    items.forEach(function(item) {
+     
+      let li = document.createElement("li");
+      li.textContent = item;
+      document.getElementById("itemList").appendChild(li);
+    });
+  }
+
+
+  function addItem() {
+    let newItem = document.getElementById("newItem").value;
+    items.push(newItem);
+    saveItems();
+    displayItems();
+  }
+</script>
+
 
   
 
